@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contempla — aprenda a ganhar dinheiro com consórcio</title>
+<meta name="description" content="Aprenda a ser contemplado mais rápido, vender carta com lucro e construir patrimônio com consórcio. Acesso completo ao método e às ferramentas Contempla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F7; --surface:#FFFFFF; --ink:#0E2A47; --ink-soft:#4A6078;
+  --line:#C9D3E0; --gold:#E3A21A; --gold-soft:#FFF1D1;
+  --green:#1F8A5B; --green-soft:#DDF3E8; --red:#B8372E; --red-soft:#FBE3E0;
+  --navy:#0A1F36;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1828; --surface:#13263D; --ink:#E8EEF6; --ink-soft:#9DB0C6;
+    --line:#26405E; --gold:#F2B536; --gold-soft:#3A2E12;
+    --green:#3FBF86; --green-soft:#123527; --red:#EF7166; --red-soft:#3A1916;
+    --navy:#06111E;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1828; --surface:#13263D; --ink:#E8EEF6; --ink-soft:#9DB0C6;
+  --line:#26405E; --gold:#F2B536; --gold-soft:#3A2E12;
+  --green:#3FBF86; --green-soft:#123527; --red:#EF7166; --red-soft:#3A1916;
+  --navy:#06111E;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque","Figtree",system-ui,sans-serif;line-height:1.08;margin:0;letter-spacing:-0.02em}
+h1{font-size:clamp(2.3rem,7.5vw,4.3rem);font-weight:800}
+h2{font-size:clamp(1.75rem,5vw,2.7rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:760px}
+section{padding:64px 0}
+.sec-head{max-width:660px;margin-bottom:30px}
+.sec-head p{color:var(--ink-soft);margin-top:12px;font-size:1.05rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* barra do cronômetro */
+.timerbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--red);color:#fff}
+.timerbar .wrap{display:flex;align-items:center;justify-content:center;gap:14px;min-height:50px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px;font-weight:600;font-size:.95rem;text-align:center}
+.clock{display:inline-flex;gap:4px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.25rem;font-variant-numeric:tabular-nums}
+.clock span{background:rgba(0,0,0,.22);border-radius:8px;padding:2px 8px;min-width:2.2ch;text-align:center}
+.timerbar.ended{background:var(--ink-soft)}
+
+/* topo */
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.logo{display:flex;align-items:center;gap:8px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;text-decoration:none}
+.logo i{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6 0 18%,transparent 19%),var(--gold);display:inline-block}
+.top a.free{margin-left:auto;font-weight:600;font-size:.92rem;color:var(--ink-soft)}
+.top .top-buy{padding:10px 16px;min-height:44px;font-size:.95rem;box-shadow:none}
+@media (max-width:480px){.top a.free{display:none}.top .top-buy{margin-left:auto}}
+
+.btn{border:0;cursor:pointer;border-radius:14px;padding:16px 24px;font-weight:800;font-size:1.05rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;min-height:52px;text-align:center}
+.btn-gold{background:var(--gold);color:#1B1300;box-shadow:0 10px 24px -12px rgba(227,162,26,.9)}
+.btn-gold:hover{filter:brightness(1.06)}
+.btn-ghost{background:transparent;border:2px solid var(--ink);color:var(--ink)}
+.btn-big{padding:19px 28px;font-size:1.15rem;width:100%;max-width:440px}
+.under-btn{display:block;margin-top:10px;color:var(--ink-soft);font-size:.86rem}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;padding:44px 0 36px}
+.hero .lead{font-size:1.15rem;color:var(--ink-soft);margin-top:18px;max-width:38ch}
+.hero-cta{margin-top:26px}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:22px;gap:10px}.hero .lead{margin-top:12px}.hero-cta{margin-top:18px}}
+
+/* carta 3D */
+.hero-visual{perspective:1100px;display:grid;place-items:center;padding:24px 0}
+.carta{position:relative;width:100%;max-width:410px;aspect-ratio:1.58/1;border-radius:24px;padding:26px;color:#F6F1E4;
+  background:
+    radial-gradient(120% 90% at 100% 0%,rgba(227,162,26,.5),transparent 55%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 9px),
+    linear-gradient(160deg,#16395F,#0A1F36 70%);
+  transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-14deg);transition:transform .18s ease-out;
+  box-shadow:0 40px 60px -28px rgba(10,31,54,.75)}
+.carta .chip{width:46px;height:34px;border-radius:8px;background:linear-gradient(135deg,#F7D27A,#B98516);transform:translateZ(30px)}
+.carta .selo{position:absolute;top:24px;right:24px;background:var(--gold);color:#1B1300;font-weight:800;font-size:.85rem;padding:5px 12px;border-radius:999px;transform:translateZ(40px)}
+.carta .valor{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.8rem,6vw,2.5rem);margin-top:22px;transform:translateZ(50px)}
+.carta .sub{opacity:.75;font-size:.92rem;transform:translateZ(20px)}
+.carta .rodape{position:absolute;left:26px;right:26px;bottom:22px;display:flex;justify-content:space-between;font-size:.86rem;transform:translateZ(25px)}
+.carta .rodape b{display:block;font-size:1.02rem}
+.moeda{position:absolute;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE7A3,#E3A21A 55%,#A8740C);box-shadow:0 12px 24px -10px rgba(0,0,0,.4);display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:#5C3F05;font-size:1.25rem}
+.moeda.m1{top:-8px;left:4%;transform:translateZ(80px) rotate(-12deg)}
+.moeda.m2{bottom:-16px;right:8%;width:44px;height:44px;font-size:.95rem;transform:translateZ(90px) rotate(10deg)}
+
+/* números */
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0}
+.proof .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.proof b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:1.7rem;font-weight:800}
+.proof span{color:var(--ink-soft);font-size:.9rem}
+.proof small{grid-column:1/-1;color:var(--ink-soft);font-size:.8rem}
+.proof small a{font-weight:600}
+
+/* dores */
+.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 30px}
+.pains div{padding:20px 0;border-top:2px solid var(--ink)}
+.pains h3{margin-bottom:6px}
+.pains p{color:var(--ink-soft)}
+
+/* comparação de custo */
+.cost{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.cost{grid-template-columns:1fr}}
+.cost div{border-radius:20px;padding:22px}
+.cost .fin{background:var(--red-soft)}
+.cost .con{background:var(--green-soft)}
+.cost span{display:block;font-weight:600;font-size:.95rem}
+.cost b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(2rem,6vw,2.6rem);font-weight:800;margin:6px 0}
+.cost .fin b{color:var(--red)}
+.cost .con b{color:var(--green)}
+.cost small{color:var(--ink-soft)}
+.saving{margin-top:16px;background:var(--ink);color:var(--bg);border-radius:20px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.saving b{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;color:var(--gold)}
+.note{margin-top:10px;color:var(--ink-soft);font-size:.82rem}
+
+/* módulos */
+.mods{list-style:none;margin:0;padding:0;counter-reset:m}
+.mods li{display:grid;grid-template-columns:70px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line);counter-increment:m}
+.mods li:last-child{border-bottom:1px solid var(--line)}
+.mods li::before{content:counter(m,decimal-leading-zero);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2.2rem;color:var(--gold);line-height:1}
+.mods p{color:var(--ink-soft);margin-top:4px}
+.mods .learn{margin-top:8px;font-size:.92rem;color:var(--ink)}
+
+/* ferramentas */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.tool .ic{width:46px;height:46px;border-radius:14px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:12px;color:var(--ink)}
+.tool .ic svg{width:24px;height:24px}
+.tool p{color:var(--ink-soft);font-size:.95rem;margin-top:4px}
+
+/* para quem é */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.fit{grid-template-columns:1fr}}
+.fit div{border-radius:20px;padding:22px;border:1px solid var(--line);background:var(--surface)}
+.fit ul{margin:12px 0 0;padding-left:20px}
+.fit li{margin:7px 0}
+.fit .yes h3{color:var(--green)}
+.fit .no h3{color:var(--ink-soft)}
+
+/* imagine */
+.imagine{background:var(--navy);color:#EAF0F7}
+.imagine h2{color:#fff}
+.imagine p{color:#B8C7D8;font-size:1.1rem;margin-top:14px;max-width:56ch}
+.imagine ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px;max-width:640px}
+.imagine li{display:flex;gap:12px;align-items:flex-start;font-size:1.05rem}
+.imagine li::before{content:"";flex:0 0 22px;height:22px;border-radius:50%;background:var(--gold);margin-top:3px;box-shadow:inset 0 0 0 6px #A8740C}
+
+/* bônus */
+.bonus{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.bonus li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;border:2px dashed var(--gold);border-radius:18px;padding:16px 18px;background:var(--surface)}
+.bonus p{color:var(--ink-soft);font-size:.93rem;margin-top:2px}
+.bonus span{font-weight:800;color:var(--green);white-space:nowrap}
+
+/* oferta */
+.offer{background:var(--ink);color:var(--bg);border-radius:28px;padding:36px 28px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+.offer h2{color:var(--bg)}
+.offer ul{padding-left:20px;margin:16px 0 0}
+.offer li{margin:7px 0}
+.offer .box{text-align:center;min-width:280px;background:color-mix(in srgb,var(--bg) 8%,transparent);border-radius:20px;padding:22px}
+.offer .tag{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:.82rem;border-radius:999px;padding:4px 12px}
+.offer .old{opacity:.65;font-size:1.05rem;margin-top:12px;text-decoration:line-through}
+.offer .now{font-family:"Bricolage Grotesque",sans-serif;font-size:3.4rem;font-weight:800;line-height:1;margin:4px 0;color:var(--gold)}
+.offer .per{opacity:.8;margin-bottom:16px}
+.offer .mini{display:block;margin-top:10px;opacity:.8;font-size:.86rem}
+.offer .mini-clock{display:block;margin-top:12px;font-weight:700;font-size:.92rem}
+@media (max-width:760px){.offer{grid-template-columns:1fr;padding:28px 20px}.offer .box{min-width:0}}
+
+/* garantia */
+.guarantee{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--green-soft);border-radius:22px;padding:24px}
+.guarantee .seal{width:90px;height:90px;border-radius:50%;border:3px solid var(--green);display:grid;place-items:center;text-align:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--green);line-height:1;font-size:1.8rem}
+.guarantee .seal small{display:block;font-size:.72rem;font-weight:700}
+.guarantee p{margin-top:6px}
+@media (max-width:520px){.guarantee{grid-template-columns:1fr;text-align:center;justify-items:center}}
+
+/* faq */
+.faq{display:grid;gap:8px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 16px}
+summary{cursor:pointer;font-weight:700;padding:13px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;color:var(--gold);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 14px;color:var(--ink-soft)}
+
+.final{text-align:center}
+.final h2{max-width:22ch;margin:0 auto}
+.final p{color:var(--ink-soft);margin:14px auto 24px;max-width:48ch}
+
+/* barra fixa no celular */
+.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:none;align-items:center;gap:12px;transform:translateY(110%);transition:transform .25s ease}
+.sticky-buy.show{transform:none}
+.sticky-buy div{line-height:1.2}
+.sticky-buy b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.25rem}
+.sticky-buy span{display:block;font-size:.78rem;color:var(--ink-soft)}
+.sticky-buy .btn{margin-left:auto;padding:12px 18px;min-height:46px}
+@media (max-width:760px){.sticky-buy{display:flex}footer{padding-bottom:110px}}
+
+footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.85rem;border-top:1px solid var(--line)}
+footer p+p{margin-top:8px}
+footer a{font-weight:600}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .carta,.sticky-buy,summary::after{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="timerbar" id="timerbar" role="status">
+  <div class="wrap">
+    <span id="timerMsg">Preço promocional termina em</span>
+    <span class="clock" id="clock" aria-label="Tempo restante"><span id="mm">29</span>:<span id="ss">00</span></span>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html"><i aria-hidden="true"></i>Contempla</a>
+    <a class="free" href="index.html">Simuladores grátis</a>
+    <a class="btn btn-gold checkout top-buy" href="#oferta">Adquirir agora</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Pare de esperar o sorteio. Aprenda a fazer o consórcio trabalhar para você.</h1>
+        <p class="lead">O método e as ferramentas para ser contemplado mais rápido, vender sua carta com lucro e construir patrimônio sem pagar juros de banco.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold btn-big checkout" href="#oferta">Adquirir por <span class="hero-price">R$ 9,90</span></a>
+          <span class="under-btn">Acesso imediato. 7 dias de garantia. Pix ou cartão.</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="carta tilt" aria-hidden="true">
+          <span class="moeda m1">R$</span>
+          <div class="chip"></div>
+          <div class="selo">Contemplada</div>
+          <div class="valor">R$ 300.000</div>
+          <div class="sub">Carta de crédito</div>
+          <div class="rodape"><div>Juros pagos<b>R$ 0</b></div><div style="text-align:right">Economia<b>R$ 352 mil</b></div></div>
+          <span class="moeda m2">R$</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTORIDADE -->
+  <div class="proof">
+    <div class="wrap">
+      <div><b>13,4 milhões</b><span>de brasileiros já estão em grupos de consórcio</span></div>
+      <div><b>R$ 331 bilhões</b><span>em cartas vendidas só de janeiro a julho de 2026</span></div>
+      <div><b>1 milhão</b><span>de pessoas contempladas no mesmo período</span></div>
+      <small>Fonte: <a href="https://legismap.com.br/conteudos/artigos-e-noticias/sistema-de-consorcios-em-julho-2026-dados-economicos" target="_blank" rel="noopener">ABAC, julho de 2026</a>. Esse dinheiro está circulando. A pergunta é: você está do lado que ganha?</small>
+    </div>
+  </div>
+
+  <!-- DOR -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>A maioria entra no consórcio, paga em dia e só torce</h2>
+        <p>Sem estratégia, o consórcio vira uma poupança lenta. Você paga por anos sem saber se está ganhando ou perdendo.</p>
+      </div>
+      <div class="pains">
+        <div><h3>Dá lance no chute</h3><p>Oferece um valor qualquer, perde a assembleia e não entende por quê. Mês após mês.</p></div>
+        <div><h3>Não sabe que dá para lucrar</h3><p>Muita gente não sabe que uma carta contemplada pode ser vendida com ágio, e deixa esse dinheiro na mesa.</p></div>
+        <div><h3>Paga juros sem precisar</h3><p>Financia imóvel ou carro pagando o dobro do valor, quando existia um caminho sem juros.</p></div>
+        <div><h3>Tem medo de cair em golpe</h3><p>O mercado de cartas contempladas tem fraudes de verdade. Sem saber o que conferir, o risco é alto.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA COM NÚMEROS -->
+  <section style="padding-top:0">
+    <div class="wrap narrow">
+      <div class="sec-head">
+        <h2>Veja a diferença na conta</h2>
+        <p>Imóvel de R$ 300 mil, pago em 18 anos.</p>
+      </div>
+      <div class="cost">
+        <div class="fin"><span>Financiamento (1% ao mês)</span><b>R$ 733.504</b><small>Parcela de R$ 3.396</small></div>
+        <div class="con"><span>Consórcio (taxa de 25% + fundo de 2%)</span><b>R$ 381.000</b><small>Parcela de R$ 1.764</small></div>
+      </div>
+      <div class="saving"><span>Dinheiro que fica no seu bolso</span><b>R$ 352.504</b></div>
+      <p class="note">Simulação educativa sem reajuste anual. Valores reais dependem da administradora e do banco. No financiamento você leva o imóvel na hora; no consórcio, ao ser contemplado. Por isso a estratégia de contemplação faz toda a diferença.</p>
+    </div>
+  </section>
+
+  <!-- O QUE VAI APRENDER -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>O que você vai aprender</h2>
+        <p>Do zero ao avançado, em linguagem simples, sem termos difíceis.</p>
+      </div>
+      <ol class="mods">
+        <li><div><h3>O consórcio por dentro</h3><p>Como o dinheiro circula no grupo, o que é taxa de administração, fundo de reserva, assembleia e contemplação.</p><p class="learn">Você vai entender o contrato antes de assinar.</p></div></li>
+        <li><div><h3>Como escolher a administradora e o grupo certos</h3><p>Como consultar o Banco Central, ler o ranking de reclamações e escolher um grupo com bom histórico de contemplações.</p><p class="learn">Você vai fugir das empresas problemáticas.</p></div></li>
+        <li><div><h3>Estratégias para ser contemplado mais rápido</h3><p>Como ler o histórico de lances, quando ofertar, como disputar lance fixo e livre e como usar o FGTS no imóvel.</p><p class="learn">Você vai parar de dar lance no chute.</p></div></li>
+        <li><div><h3>Lance embutido sem tirar dinheiro do bolso</h3><p>Como usar parte da própria carta para dar lance e quanto de crédito aumentar para compensar.</p><p class="learn">Você vai disputar mesmo com pouco dinheiro guardado.</p></div></li>
+        <li><div><h3>Como vender uma carta contemplada com lucro</h3><p>Como funciona o ágio, quando vale a pena vender, como calcular seu retorno e como formalizar a transferência.</p><p class="learn">Você vai saber transformar uma contemplação em dinheiro.</p></div></li>
+        <li><div><h3>Alavancagem: o imóvel que se paga</h3><p>Como comprar com a carta, alugar e usar o aluguel para pagar a parcela. E como reinvestir em novas cotas.</p><p class="learn">Você vai enxergar o consórcio como ferramenta de patrimônio.</p></div></li>
+        <li><div><h3>Proteção contra golpes</h3><p>Os golpes mais comuns, os sinais de alerta e o checklist do que conferir antes de pagar qualquer coisa.</p><p class="learn">Você vai negociar com segurança.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FERRAMENTAS -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>As ferramentas que você vai usar</h2>
+        <p>Nada de conta no papel. Você mexe nos números e vê o resultado na hora.</p>
+      </div>
+      <div class="tools">
+        <div class="tool"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg></div><h3>Consórcio x financiamento</h3><p>Compare quanto você paga em cada caminho antes de decidir.</p></div>
+        <div class="tool"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16V9M12 16V5M17 16v-4"/></svg></div><h3>Simulador de lance</h3><p>Veja se seu lance está acima ou abaixo do que tem vencido no grupo.</p></div>
+        <div class="tool"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Plano de contemplação</h3><p>Compare 4 caminhos e descubra o mais rápido para você ser contemplado.</p></div>
+        <div class="tool"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Lucro na venda da carta</h3><p>Calcule o ágio e compare com deixar o dinheiro aplicado.</p></div>
+        <div class="tool"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div><h3>Comprar e alugar</h3><p>Descubra quanto da parcela o aluguel consegue pagar.</p></div>
+        <div class="tool"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><h3>Bola de neve patrimonial</h3><p>Simule anos de reinvestimento em novas cotas e veja seu patrimônio crescer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGINE -->
+  <section class="imagine">
+    <div class="wrap">
+      <h2>Agora imagine daqui a alguns meses</h2>
+      <p>Você abre o histórico do seu grupo e sabe exatamente quanto ofertar. Sem ansiedade, sem chute.</p>
+      <ul>
+        <li>Você entende cada linha do contrato e escolhe a administradora com segurança.</li>
+        <li>Você tem um plano claro para ser contemplado, com data e valor.</li>
+        <li>Você sabe quando vale mais vender a carta e quando vale usar.</li>
+        <li>Você enxerga o consórcio como um caminho para ter imóveis, não como uma dívida.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PARA QUEM É -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>É para você?</h2></div>
+      <div class="fit">
+        <div class="yes"><h3>É para você se</h3>
+          <ul>
+            <li>Já tem consórcio e quer ser contemplado logo</li>
+            <li>Pensa em fazer consórcio e quer escolher certo</li>
+            <li>Quer comprar imóvel ou carro sem pagar juros de banco</li>
+            <li>Quer construir patrimônio com imóveis a longo prazo</li>
+          </ul>
+        </div>
+        <div class="no"><h3>Não é para você se</h3>
+          <ul>
+            <li>Procura dinheiro rápido ou garantido</li>
+            <li>Precisa do bem para amanhã e não tem nada para lance</li>
+            <li>Não quer acompanhar seu grupo nem fazer contas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÔNUS -->
+  <section style="padding-top:0">
+    <div class="wrap narrow">
+      <div class="sec-head"><h2>E ainda leva junto</h2></div>
+      <ul class="bonus">
+        <li><div><h3>Checklist anti-golpe</h3><p>O que conferir antes de comprar ou vender qualquer carta.</p></div><span>Incluso</span></li>
+        <li><div><h3>Glossário do consórcio</h3><p>Todos os termos do contrato explicados de forma simples.</p></div><span>Incluso</span></li>
+        <li><div><h3>Lista das administradoras mais citadas</h3><p>Com os links oficiais e onde consultar cada uma no Banco Central.</p></div><span>Incluso</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section id="oferta">
+    <div class="wrap">
+      <div class="offer">
+        <div>
+          <h2>Contempla completo</h2>
+          <ul>
+            <li>7 módulos do básico ao avançado</li>
+            <li>6 ferramentas de simulação</li>
+            <li>Checklist anti-golpe</li>
+            <li>Glossário do consórcio</li>
+            <li>Lista das administradoras mais citadas</li>
+            <li>Garantia de 7 dias</li>
+          </ul>
+        </div>
+        <div class="box">
+          <span class="tag" id="offerTag">Preço promocional</span>
+          <div class="old" id="oldPrice">De R$ 19,90</div>
+          <div class="now" id="nowPrice">R$ 9,90</div>
+          <div class="per" id="perText">pagamento único</div>
+          <a class="btn btn-gold btn-big checkout" href="#oferta">Quero garantir meu acesso</a>
+          <span class="mini">Pix ou cartão. Acesso enviado por e-mail.</span>
+          <span class="mini-clock" id="miniClock"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIA -->
+  <section style="padding-top:0">
+    <div class="wrap narrow">
+      <div class="guarantee">
+        <div class="seal">7<small>dias</small></div>
+        <div>
+          <h3>Risco zero para você</h3>
+          <p>Entre, veja tudo, use as ferramentas. Se em até 7 dias achar que não valeu, peça o reembolso pela própria Kiwify e receba 100% do valor. Sem perguntas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap narrow">
+      <div class="sec-head"><h2>Perguntas frequentes</h2></div>
+      <div class="faq">
+        <details><summary>Vou ser contemplado com certeza?</summary><p>Ninguém pode garantir contemplação, e quem promete isso está cometendo prática proibida. O que você aprende aqui é como montar uma estratégia baseada no histórico do seu grupo, que aumenta muito suas chances.</p></details>
+        <details><summary>Preciso já ter um consórcio?</summary><p>Não. Serve para quem já tem cotas e para quem ainda vai escolher o primeiro grupo.</p></details>
+        <details><summary>Preciso entender de finanças?</summary><p>Não. Tudo é explicado em linguagem simples, com exemplos e simuladores que fazem as contas por você.</p></details>
+        <details><summary>O Contempla vende consórcio?</summary><p>Não. É um conteúdo educativo e independente. Não temos vínculo com administradoras e não ganhamos comissão por indicação.</p></details>
+        <details><summary>Como recebo o acesso?</summary><p>Logo após a confirmação do pagamento, a Kiwify envia um e-mail com seu acesso. Confira também a caixa de spam.</p></details>
+        <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias para pedir o reembolso pela Kiwify e recebe 100% do valor de volta.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Daqui a um ano você vai estar no mesmo lugar, ou com um plano?</h2>
+      <p>O consórcio que você paga hoje pode ser só uma parcela, ou o começo do seu patrimônio. A diferença é saber usar.</p>
+      <a class="btn btn-gold btn-big checkout" href="#oferta">Quero aprender agora</a>
+      <span class="under-btn" id="finalClock"></span>
+    </div>
+  </section>
+</main>
+
+<div class="sticky-buy" id="stickyBuy" aria-hidden="true">
+  <div><b id="stickyPrice">R$ 9,90</b><span id="stickyInfo">Promoção acaba em 29:00</span></div>
+  <a class="btn btn-gold checkout" href="#oferta" tabindex="-1">Adquirir agora</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Conteúdo educativo. Não é recomendação de investimento e não garante contemplação. Resultados dependem da administradora, do grupo e do mercado. O Contempla não é administradora de consórcio.</p>
+    <p><a href="index.html">Simuladores grátis</a> · Uma criação Prancheta Digital.</p>
+  </div>
+</footer>
+
+<script>
+/* ================= CONFIGURAÇÃO: só mexa aqui ================= */
+const LINK_PROMO  = "https://pay.kiwify.com.br/uuLl8Om";   // link da Kiwify de R$ 9,90
+const LINK_NORMAL = "";               // link da Kiwify de R$ 19,90. Quando preencher, o cronômetro liga sozinho
+const PRECO_PROMO  = "R$ 9,90";
+const PRECO_NORMAL = "R$ 19,90";
+const TIPO_PAGAMENTO = "pagamento único";
+const MINUTOS_OFERTA = 29;            // tempo da promoção para cada visitante
+/* ============================================================== */
+
+const $ = id => document.getElementById(id);
+const CHAVE = "contempla_oferta_fim";
+
+// o prazo é de cada visitante e fica salvo: recarregar a página não reinicia o tempo
+const TEM_PROMO = LINK_NORMAL !== "";   // sem o link do preço normal, não existe promoção para acabar
+let fim = 0;
+try { fim = parseInt(localStorage.getItem(CHAVE) || "0", 10); } catch(e) {}
+if (TEM_PROMO && !fim) {
+  fim = Date.now() + MINUTOS_OFERTA*60*1000;
+  try { localStorage.setItem(CHAVE, String(fim)); } catch(e) {}
+}
+
+function aplicarLinks(promo){
+  const link = promo ? LINK_PROMO : LINK_NORMAL;
+  document.querySelectorAll('.checkout').forEach(a => {
+    if (link) { a.href = link; a.target = "_blank"; a.rel = "noopener"; }
+    else { a.href = "#oferta"; a.removeAttribute('target'); }
+  });
+}
+
+let acabou = null;
+function lancamento(){
+  aplicarLinks(true);
+  $('nowPrice').textContent = PRECO_PROMO;
+  $('oldPrice').hidden = true;
+  $('offerTag').textContent = 'Preço de lançamento';
+  $('perText').textContent = TIPO_PAGAMENTO;
+  $('stickyPrice').textContent = PRECO_PROMO;
+  $('stickyInfo').textContent = 'Preço de lançamento';
+  $('timerMsg').textContent = 'Preço de lançamento: ' + PRECO_PROMO + ' com acesso imediato';
+  $('clock').hidden = true;
+  $('miniClock').textContent = '';
+  $('finalClock').textContent = 'Acesso imediato por ' + PRECO_PROMO;
+}
+
+function tick(){
+  const resta = Math.max(0, fim - Date.now());
+  const promo = resta > 0;
+  const m = Math.floor(resta/60000), s = Math.floor((resta%60000)/1000);
+  const mm = String(m).padStart(2,'0'), ss = String(s).padStart(2,'0');
+  $('mm').textContent = mm; $('ss').textContent = ss;
+
+  if (promo !== !acabou || acabou === null){
+    acabou = !promo;
+    aplicarLinks(promo);
+    $('nowPrice').textContent = promo ? PRECO_PROMO : PRECO_NORMAL;
+    $('oldPrice').textContent = 'De ' + PRECO_NORMAL;
+    $('oldPrice').hidden = !promo;
+    $('offerTag').textContent = promo ? 'Preço promocional' : 'Preço normal';
+    $('perText').textContent = TIPO_PAGAMENTO;
+    $('stickyPrice').textContent = promo ? PRECO_PROMO : PRECO_NORMAL;
+    $('timerbar').classList.toggle('ended', !promo);
+    $('timerMsg').textContent = promo ? 'Preço promocional termina em' : 'A promoção terminou. Ainda dá para garantir pelo preço normal.';
+    $('clock').hidden = !promo;
+  }
+  const txt = promo ? `Esse preço some em ${mm}:${ss}` : '';
+  $('miniClock').textContent = txt;
+  $('finalClock').textContent = promo ? `Preço de ${PRECO_PROMO} por mais ${mm}:${ss}` : '';
+  $('stickyInfo').textContent = promo ? `Promoção acaba em ${mm}:${ss}` : TIPO_PAGAMENTO;
+}
+document.querySelectorAll('.hero-price').forEach(el => el.textContent = PRECO_PROMO);
+if (TEM_PROMO) { tick(); setInterval(tick, 1000); } else { lancamento(); }
+
+// carta 3D que inclina com o dedo/mouse
+const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.tilt').forEach(el => {
+  if (reduz) return;
+  const base = 'rotateX(8deg) rotateY(-14deg)';
+  el.parentElement.addEventListener('pointermove', e => {
+    const r = el.getBoundingClientRect();
+    const rx = ((e.clientY - r.top)/r.height - .5) * -18;
+    const ry = ((e.clientX - r.left)/r.width - .5) * 22;
+    el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  el.parentElement.addEventListener('pointerleave', () => el.style.transform = base);
+});
+
+// barra de compra fixa no celular
+const barra = $('stickyBuy');
+let ofertaVisivel = false;
+new IntersectionObserver(([e]) => { ofertaVisivel = e.isIntersecting; atualizar(); }).observe($('oferta'));
+function atualizar(){
+  const mostrar = !ofertaVisivel;
+  barra.classList.toggle('show', mostrar);
+  barra.setAttribute('aria-hidden', String(!mostrar));
+  barra.querySelector('a').tabIndex = mostrar ? 0 : -1;
+}
+window.addEventListener('scroll', atualizar, {passive:true});
+</script>
+</body>
+</html>
